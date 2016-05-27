@@ -1,0 +1,28 @@
+﻿@model HSDraft.Models.Draft.Player
+
+<div style="margin-bottom:15px">
+    <b>Manacurve: (<text style="color:green">minions</text>, <text style="color:orange">others</text>)</b>
+</div>
+
+@for (int i = 0; i < 8; i++)
+{
+    if (Model.Picks.Count > 0)
+    {
+        if (i == 7)
+        {
+            <div style="float:left; width:20px">7+</div>
+            <div class="progress">                
+                <div class="progress-bar progress-bar-success" style="width:@((Model.Picks.Where(x => x.Cost > 6 && x.Type == HSDraft.Enums.Cardtype.Minion).ToList().Count * 100) / Model.Picks.Count)%">@Model.Picks.Where(x => x.Cost > 6 && x.Type == HSDraft.Enums.Cardtype.Minion).ToList().Count</div>
+                <div class="progress-bar progress-bar-warning" style="width:@((Model.Picks.Where(x => x.Cost > 6 && x.Type != HSDraft.Enums.Cardtype.Minion).ToList().Count * 100) / Model.Picks.Count)%">@Model.Picks.Where(x => x.Cost > 6 && x.Type != HSDraft.Enums.Cardtype.Minion).ToList().Count</div>
+            </div>
+        }
+        else
+        {
+            <div style="float:left; width:20px">@i</div>
+            <div class="progress">                
+                <div class="progress-bar progress-bar-success" style="width:@((Model.Picks.Where(x => x.Cost == i && x.Type == HSDraft.Enums.Cardtype.Minion).ToList().Count * 100) / Model.Picks.Count)%">@Model.Picks.Where(x => x.Cost == i && x.Type == HSDraft.Enums.Cardtype.Minion).ToList().Count</div>
+                <div class="progress-bar progress-bar-warning" style="width:@((Model.Picks.Where(x => x.Cost == i && x.Type != HSDraft.Enums.Cardtype.Minion).ToList().Count * 100) / Model.Picks.Count)%">@Model.Picks.Where(x => x.Cost == i && x.Type != HSDraft.Enums.Cardtype.Minion).ToList().Count</div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿@model HearthstoneDraft.Models.Maintenance.Maintenance
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Completed drafts: </h2>
+<ul>
+    @foreach (var item in Model.FinishedDrafts)
+    {
+        <li>@item</li>
+    }
+</ul>
+

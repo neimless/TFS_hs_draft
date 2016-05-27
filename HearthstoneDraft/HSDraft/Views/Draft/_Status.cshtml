@@ -1,0 +1,18 @@
+﻿@model HSDraft.Models.Draft.Draft
+
+@Html.HiddenFor(x => x.State)
+
+<table>
+    <tr>
+        <td>Player name: </td>
+        <td>@User.Identity.Name</td>
+    </tr>
+    <tr>
+        <td>Draft status: </td>
+        <td>@Model.GetStateString()</td>
+    </tr>
+    <tr>
+        <td>Players: </td>
+        <td>@Model.Players.Count / @Model.Maxplayers</td>
+    </tr>
+</table>

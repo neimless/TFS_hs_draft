@@ -1,0 +1,15 @@
+﻿@model HearthstoneDraft.Models.History.History
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Draft history</h2>
+
+<ul>
+    @foreach (var item in Model.Drafts)
+    {
+        <li>@item.DraftId</li>
+    }
+</ul>
+

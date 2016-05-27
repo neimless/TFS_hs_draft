@@ -1,0 +1,12 @@
+﻿{
+    "Draftrules": [
+        {
+            "Id": "Default",
+            "Commons": 12,
+            "Rares": 3,
+            "EpicChance": 15,
+            "LegendaryChance": 2
+        }
+    ]
+}
+

@@ -1,0 +1,35 @@
+﻿@using HearthstoneDraft.Enums
+@model HearthstoneDraft.Models.Draft.Player
+
+<table>
+    <thead>
+        <tr>
+            <th>Pick #</th>
+            <th>Cardname</th>
+        </tr>        
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Picks.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                @if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Rare)
+                {
+                    <td style="color:blue">@Model.Picks.ElementAt(i).Name</td>       
+                }
+                else if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Epic)
+                {
+                    <td style="color:purple">@Model.Picks.ElementAt(i).Name</td>
+                }
+                else if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Legendary)
+                {
+                    <td style="color:orange">@Model.Picks.ElementAt(i).Name</td>
+                }
+                else
+                {
+                    <td style="color:darkgrey">@Model.Picks.ElementAt(i).Name</td>           
+                }                
+            </tr>
+        }
+    </tbody>    
+</table>

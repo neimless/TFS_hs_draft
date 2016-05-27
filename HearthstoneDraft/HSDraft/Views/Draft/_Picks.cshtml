@@ -1,0 +1,43 @@
+﻿@using HSDraft.Enums
+@model HSDraft.Models.Draft.Player
+
+<table>
+    <thead>
+        <tr>
+            <th style="width:20px">#</th>
+            <th>Cardname</th>
+        </tr>        
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Picks.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                @if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Rare)
+                {                    
+                    <td>
+                        <a href="" style="color:blue" cardid="@Model.Picks.ElementAt(i).Id" class="card-info-link">@Model.Picks.ElementAt(i).Name</a>
+                    </td>       
+                }
+                else if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Epic)
+                {
+                    <td>
+                        <a href="" style="color:purple" cardid="@Model.Picks.ElementAt(i).Id" class="card-info-link">@Model.Picks.ElementAt(i).Name</a>
+                    </td>
+                }
+                else if (@Model.Picks.ElementAt(i).Rarity == @Rarity.Legendary)
+                {
+                    <td>
+                        <a href="" style="color:orange" cardid="@Model.Picks.ElementAt(i).Id" class="card-info-link">@Model.Picks.ElementAt(i).Name</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="" style="color:darkgrey" cardid="@Model.Picks.ElementAt(i).Id" class="card-info-link">@Model.Picks.ElementAt(i).Name</a>
+                    </td>           
+                }                
+            </tr>
+        }
+    </tbody>    
+</table>

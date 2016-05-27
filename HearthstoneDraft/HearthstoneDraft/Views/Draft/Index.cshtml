@@ -1,0 +1,33 @@
+﻿@model HearthstoneDraft.Models.Draft.DraftIndex
+
+@{
+    ViewBag.Title = "Draft lobby";
+}
+
+<h2>Index</h2>
+
+<input type="hidden" id="player-name" />
+
+@if (Model.Draft == null)
+{
+    <label>Max players </label>
+    <input type="text" id="player-count" value="" />
+    <input type="button" value="Start draft" id="start-draft" />
+}
+else
+{
+    <table>
+        <tr>
+            <td>@Model.Draft.Id</td>
+            <td>@Model.Draft.State</td>
+            <td>@Model.Draft.Players.Count / @Model.Draft.Maxplayers</td>
+            <td><a href="" id="join-draft"> Join draft </a></td>
+        </tr>
+    </table>
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/Draft/index.js"></script>
+}
+

@@ -1,0 +1,54 @@
+﻿@model HSDraft.Models.CardBase.Card
+
+<div class="row">
+    <div class="col-md-6"><em>Cost: </em>@Model.Cost</div>
+</div>
+<div class="row">
+    @if (Model.Rarity == HSDraft.Enums.Rarity.Rare)
+    {
+    <div class="col-md-12" style="color:blue">@Model.Name</div>
+    }
+    else if (Model.Rarity == HSDraft.Enums.Rarity.Epic)
+    {
+    <div class="col-md-12" style="color:purple">@Model.Name</div>
+    }
+    else if (Model.Rarity == HSDraft.Enums.Rarity.Legendary)
+    {
+    <div class="col-md-12" style="color:orange">@Model.Name</div>
+    }
+    else
+    {
+    <div class="col-md-12" style="color:darkgrey">@Model.Name</div>
+    }
+</div>
+<div class="row">
+</div>
+<div class="row" style="height:100px; width:195px">
+    <div class="col-md-12 clearfix">@Html.Raw(Model.Text)</div>
+</div>
+<div class="row">
+    <div class="col-md-12 clearfix"><em>Class: @Model.PlayerClass.ToString()</em></div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.Race))
+{
+    <div class="row">
+        <div class="col-md-12 clearfix"><em>Race: @Model.Race</em></div>
+    </div>
+}
+
+<div class="row">
+    @if (Model.Type == HSDraft.Enums.Cardtype.Weapon)
+    {
+        <div class="col-md-12">@Model.Attack / @Model.Durability</div>
+    }
+    else if (Model.Type == HSDraft.Enums.Cardtype.Minion)
+    {
+        <div class="col-md-12">@Model.Attack / @Model.Health</div>
+    }
+    else
+    {
+        <div class="col-md-12">-</div>
+    }
+</div>
+

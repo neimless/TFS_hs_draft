@@ -1,0 +1,81 @@
+﻿@model HSDraft.Models.Draft.DraftIndex
+
+@{
+    ViewBag.Title = "Lobby";
+}
+
+<h2>Lobby</h2>
+<br />
+Create a new draft table or join an existing one. Draft will begin as soon as the table is full.
+You may resume a draft queue or a ongoing draft as well.
+Registering into a draft will lock you in, so please be sure to respect other players and finish your draft.
+<hr />
+
+<form class="form-horizontal" id="new-draft-form">  
+    <h4>Start a new draft</h4>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(x => x.PlayerCount, new { @class = "control-label col-md-2" })
+        @Html.TextBoxFor(x => x.PlayerCount, new { @class = "form-control col-md-2", @style = "width:50px", @placeholder = "2-8" })
+        <input type="button" value="Start" id="start-draft" class="col-md-1 btn btn-primary" style="margin-left:20px"/>
+    </div>   
+    <div class="form-group">
+        @Html.ValidationMessageFor(x => x.PlayerCount, "", new { @class = "text-danger control-label col-md-offset-2" })
+    </div>   
+</form>
+
+<hr />
+
+@if (Model.Draft != null || Model.Draft.Count > 0)
+{
+<h4>Ongoing drafts</h4><br />
+
+foreach (var draft in Model.Draft)
+{
+    <div class="row">
+        <div class="col-md-2" style="padding: 5px">
+            <strong>Draft id</strong>
+        </div>
+        <div class="col-md-2" style="padding: 5px">
+            <strong>Draft status</strong>
+        </div>
+        <div class="col-md-1" style="padding: 5px">
+            <strong>Players</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="padding: 5px">
+            @draft.Id
+        </div>
+        <div class="col-md-2" style="padding: 5px">
+            @draft.GetStateString()
+        </div>
+        <div class="col-md-1" style="padding: 5px">
+            @draft.Players.Count / @draft.Maxplayers
+        </div>
+        @if (draft.Players.Any(x => x.Name == User.Identity.Name))
+        {
+            <div class="col-md-2" style="padding: 5px">
+                <a href="" class="join-draft" draftid="@draft.Id"> Resume draft </a>
+            </div>
+        }
+        else if (draft.State == HSDraft.Enums.Draftstate.WaitingForPlayers)
+        {
+            <div class="col-md-2" style="padding: 5px">
+                <a href="" class="join-draft" draftid="@draft.Id"> Join draft </a>
+            </div>
+        }
+        <div class="col-md-5">@string.Join(", ", draft.Players.Select(x => x.Name).ToList())</div>
+    </div>
+}
+<hr />
+}
+@section scripts {    
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>   
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/Draft/index.js"></script>
+}
+

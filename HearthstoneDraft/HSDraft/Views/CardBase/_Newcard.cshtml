@@ -1,0 +1,17 @@
+﻿@model HSDraft.Models.CardBase.Card
+
+@using (Html.BeginForm("Save", "CardBase", FormMethod.Post))
+{
+    <label>Card id</label>
+    @Html.EditorFor(x => x.Id)
+    <br />
+    <label>Rarity</label>
+    @Html.EnumDropDownListFor(x => x.Rarity)
+    <br />
+    <label>Manacost</label>
+    @Html.EditorFor(x => x.Cost)
+    <br />
+    <input type="submit" value="Tallenna" />
+    <br />
+    <br />
+}

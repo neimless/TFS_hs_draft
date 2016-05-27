@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "HSD";
+}
+
+<div class="jumbotron">
+    <h1>HS Draft simulator</h1>
+    <p class="lead">This is a draft simulator created to simulate MTG type limited draft with Hearthstone cards. View rules for additional information.<br /> 
+    <strong>*DISCLAIMER: the software is still under development so be prepared to face updates and maintenance*</strong></p>
+    @if (Request.IsAuthenticated)
+    {
+        <a href="@Url.Action("Index", "Draft")" class="btn btn-primary btn-lg">Start drafting</a>
+        <a href="@Url.Action("DraftHistory", "Draft")" class="btn btn-primary btn-lg">View draft history</a>
+        <a href="@Url.Action("Index", "Cardbase")" class="btn btn-primary btn-lg">View card database</a>
+        <a href="@Url.Action("Rules", "Home")" class="btn btn-primary btn-lg">View rules</a>
+        if (User.Identity.Name == "neimless")
+        {
+            <a href="@Url.Action("Index", "Maintenance")" class="btn btn-primary btn-lg">Maintenance</a>
+        }
+    }
+    else
+    {
+        <a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Login to get started</a>
+        <a href="@Url.Action("Rules", "Home")" class="btn btn-primary btn-lg">View rules</a>
+    }  
+    
+</div>

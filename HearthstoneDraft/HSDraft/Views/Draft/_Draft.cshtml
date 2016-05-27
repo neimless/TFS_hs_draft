@@ -1,0 +1,43 @@
+﻿@using HSDraft.Enums
+@model HSDraft.Models.Draft.Pack
+
+<div class="row" id="draft-container-to-hide">
+    @if (Model.EnableForPick)
+    {
+        foreach (var item in Model.Cards)
+        {
+            if (item.Rarity == Rarity.Rare)
+            {
+                <div class="col-md-3" style="border: 1px solid; border-radius: 5px;padding: 5px">
+                    <a href="" style="color:blue;width:160px;display:inline-block" cardid="@item.Id" class="card-info-link">@item.Name</a>
+                    <a href="" style="color:black" packnro="@Model.Packnumber" class="pick-card-link btn-default btn-xs" cardid="@item.Id">PICK</a>
+                </div>
+            }
+            else if (item.Rarity == Rarity.Epic)
+            {
+                <div class="col-md-3" style="border: 1px solid; border-radius: 5px;padding: 5px">
+                    <a href="" style="color:purple;width:160px;display:inline-block" cardid="@item.Id" class="card-info-link">@item.Name</a>
+                    <a href="" style="color:black" packnro="@Model.Packnumber" class="pick-card-link btn-default btn-xs" cardid="@item.Id">PICK</a>
+                </div>
+            }
+            else if (item.Rarity == Rarity.Legendary)
+            {
+                <div class="col-md-3" style="border: 1px solid; border-radius: 5px;padding: 5px">
+                    <a href="" style="color:orange;width:160px;display:inline-block" cardid="@item.Id" class="card-info-link">@item.Name</a>
+                    <a href="" style="color:black" packnro="@Model.Packnumber" class="pick-card-link btn-default btn-xs" cardid="@item.Id">PICK</a>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-3" style="border: 1px solid; border-radius: 5px;padding: 5px">
+                    <a href="" style="color:darkgrey;width:160px;display:inline-block" cardid="@item.Id" class="card-info-link">@item.Name</a>
+                    <a href="" style="color:black" packnro="@Model.Packnumber" class="pick-card-link btn-default btn-xs" cardid="@item.Id">PICK</a>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <div>Waiting for other players</div>
+    }
+</div>

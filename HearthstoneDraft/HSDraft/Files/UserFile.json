@@ -1,0 +1,52 @@
+{
+  "Users": [
+    {
+      "Name": "Lepi",
+      "Password": "Password01!"
+    },
+    {
+      "Name": "Lepi2",
+      "Password": "Password01!"
+    },
+    {
+      "Name": "Kerho1",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho2",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho3",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho4",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho5",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho6",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho7",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "Kerho8",
+      "Password": "Kerho123!"
+    },
+    {
+      "Name": "blizzard",
+      "Password": "Blizzard01!"
+    },
+    {
+      "Name": "blizzard2",
+      "Password": "Blizzard02!"
+    }
+  ]
+}

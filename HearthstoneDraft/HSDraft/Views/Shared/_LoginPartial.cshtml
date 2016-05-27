@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Draft", "Index", "Draft")</li>
+        <li>@Html.ActionLink("Draft history", "DraftHistory", "Draft")</li>
+        <li>@Html.ActionLink("Card database", "Index", "Cardbase")</li>     
+        <li>@Html.ActionLink("Rules", "Rules", "Home")</li>  
+        @if (User.Identity.Name == "neimless")
+        {
+            <li>@Html.ActionLink("Maintenance", "Index", "Maintenance")</li>
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        }
+    </ul>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div style="color: #999999; padding:15px">Logged in as <strong>@User.Identity.Name</strong></div>
+            @*@Html.ActionLink("Logged in as " + User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+        </li>
+        @*<li>@Html.ActionLink("Change password", "ChangePassword", "Manage")</li>*@
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>        
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">        
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Rules", "Rules", "Home")</li>  
+    </ul>
+}

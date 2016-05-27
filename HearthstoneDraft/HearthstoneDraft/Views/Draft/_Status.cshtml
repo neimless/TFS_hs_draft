@@ -1,0 +1,16 @@
+﻿@model HearthstoneDraft.Models.Draft.DraftIndex
+
+<table>
+    <tr>
+        <td>Player name: </td>
+        <td>@Model.Playername</td>
+    </tr>
+    <tr>
+        <td>Draft status: </td>
+        <td>@Model.Draft.State</td>
+    </tr>
+    <tr>
+        <td>Players: </td>
+        <td>@Model.Draft.Players.Count / @Model.Draft.Maxplayers</td>
+    </tr>
+</table>

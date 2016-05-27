@@ -1,0 +1,39 @@
+﻿@model HSDraft.Models.History.History
+
+@{
+    ViewBag.Title = "Draft history";
+}
+
+<h2>Draft history</h2>
+
+<div class="col-md-2" style="border: 2px solid; border-radius: 15px;float:right;height:230px">
+    <div id="draft-cardinfo-container" style="padding: 10px"></div>
+</div>
+
+@foreach (var draft in Model.Drafts)
+{
+    <div id="draft-history-container" class="row">
+        DraftId: <a href="" draftid="@draft.DraftId" class="draft-history-link">@draft.DraftId</a> (click to open/close history details)
+        <div id="draft-info-id-@draft.DraftId" class="draft-history-picks" hidden>
+            <div class="col-md-2" style="float:left">
+                @{ Html.RenderPartial("_Picks", draft.Players.FirstOrDefault(x => x.Name == User.Identity.Name)); }
+            </div>
+            <div id="draft-history-manacurve" style="float:left">
+                @{ Html.RenderPartial("_Manacurve", draft.Players.FirstOrDefault(x => x.Name == User.Identity.Name)); }
+            </div>
+        </div>
+    </div>
+}
+
+<div id="all-cardinfo-container">
+    @foreach (var item in Model.AllCards)
+    {
+        <div id="cardid-@item.Id" hidden>
+            @{ Html.RenderPartial("_CardInfo", item); }
+        </div>
+                }
+</div>
+
+@section scripts {
+    <script src="~/Scripts/Draft/drafthistory.js"></script>
+}

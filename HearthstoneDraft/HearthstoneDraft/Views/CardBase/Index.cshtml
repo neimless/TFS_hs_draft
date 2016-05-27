@@ -1,0 +1,75 @@
+﻿@model HearthstoneDraft.Models.CardBase.CardBase
+
+@{
+    ViewBag.Title = "Card database";
+}
+
+<h2>Card database</h2>
+
+@*<a href="" id="add-new-card-link">Add new card</a> 
+<br />
+<div id="newcard">
+    @{ Html.RenderPartial("_Newcard", new HearthstoneDraft.Models.CardBase.Card()); }
+</div>*@
+
+<div class="row">
+    <div class="col-md-2">
+        <b>Commons:</b>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Commons)
+            {
+                <li style="color: darkgrey">
+                    @item.Name
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <b>Classcards:</b>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Classcards)
+            {
+                <li style="color: grey">
+                    @item.Name
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <b>Rares:</b>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Rares)
+            {
+                <li style="color: blue">
+                    @item.Name
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <b>Epics:</b>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Epics)
+            {
+                <li style="color: purple">
+                    @item.Name
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <b>Legendaries:</b>
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Legendaries)
+            {
+                <li style="color: orange">
+                    @item.Name
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/Cardbase/index.js"></script>
+}
